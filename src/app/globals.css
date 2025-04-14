@@ -1,6 +1,6 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,12 +23,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
+} */
 
 #game-board {
+  margin-top: 6rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .letter-box {
@@ -69,7 +71,7 @@ body {
 }
 
 .keyboard-button {
-  font-size: 2rem;
+  font-size: 1rem;
   font-weight: 700;
   padding: 0.5rem;
   margin: 0 2px;
