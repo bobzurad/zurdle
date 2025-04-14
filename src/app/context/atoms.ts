@@ -1,7 +1,7 @@
 import { atom } from 'jotai';
 
-export type MainModel = {
-  currentGuess: [];
+type MainModel = {
+  currentGuess: String[];
   numberOfGuesses: number;
   numberOfGuessesRemaining: number;
   wordLength: number;
