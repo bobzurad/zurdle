@@ -1,6 +1,7 @@
 import { atom } from 'jotai';
 
 type MainModel = {
+  guesses: String[][];
   currentGuess: String[];
   numberOfGuesses: number;
   numberOfGuessesRemaining: number;
@@ -8,6 +9,7 @@ type MainModel = {
 };
 
 export const mainAtom = atom({
+  guesses: [],
   currentGuess: [],
   numberOfGuesses: 6,
   numberOfGuessesRemaining: 6,

@@ -7,37 +7,37 @@ export default function Keyboard(props: {}) {
     <div id="keyboard-cont">
       <div className="first-row">
         <Key value="q" />
-        <button className="keyboard-button">w</button>
-        <button className="keyboard-button">e</button>
-        <button className="keyboard-button">r</button>
-        <button className="keyboard-button">t</button>
-        <button className="keyboard-button">y</button>
-        <button className="keyboard-button">u</button>
-        <button className="keyboard-button">i</button>
-        <button className="keyboard-button">o</button>
-        <button className="keyboard-button">p</button>
+        <Key value="w" />
+        <Key value="e" />
+        <Key value="r" />
+        <Key value="t" />
+        <Key value="y" />
+        <Key value="u" />
+        <Key value="i" />
+        <Key value="o" />
+        <Key value="p" />
       </div>
       <div className="second-row">
-        <button className="keyboard-button">a</button>
-        <button className="keyboard-button">s</button>
-        <button className="keyboard-button">d</button>
-        <button className="keyboard-button">f</button>
-        <button className="keyboard-button">g</button>
-        <button className="keyboard-button">h</button>
-        <button className="keyboard-button">j</button>
-        <button className="keyboard-button">k</button>
-        <button className="keyboard-button">l</button>
+        <Key value="a" />
+        <Key value="s" />
+        <Key value="d" />
+        <Key value="f" />
+        <Key value="g" />
+        <Key value="h" />
+        <Key value="j" />
+        <Key value="k" />
+        <Key value="l" />
       </div>
       <div className="third-row">
-        <button className="keyboard-button">Del</button>
-        <button className="keyboard-button">z</button>
-        <button className="keyboard-button">x</button>
-        <button className="keyboard-button">c</button>
-        <button className="keyboard-button">v</button>
-        <button className="keyboard-button">b</button>
-        <button className="keyboard-button">n</button>
-        <button className="keyboard-button">m</button>
-        <button className="keyboard-button">Enter</button>
+        <Key value="Del" />
+        <Key value="z" />
+        <Key value="x" />
+        <Key value="c" />
+        <Key value="v" />
+        <Key value="b" />
+        <Key value="n" />
+        <Key value="m" />
+        <Key value="Enter" />
       </div>
     </div>
   );
