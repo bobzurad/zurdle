@@ -5757,3 +5757,5 @@ export const WORDS = [
   'biffy',
   'pupal',
 ];
+
+export const SOLUTION = WORDS[Math.floor(Math.random() * WORDS.length)];
