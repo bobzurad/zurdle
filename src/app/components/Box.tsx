@@ -17,6 +17,7 @@ export default function Box(props: {
   const activeRow = useAtomValue(activeRowAtom);
 
   let value = '';
+  let updatedClassName = className;
 
   if (
     activeRow === rowNumber &&
@@ -31,11 +32,11 @@ export default function Box(props: {
     value = state.guesses[rowNumber][boxNumber];
   }
 
-  //TODO: this conditonal rendering is not working
-  //const className = `${value.length === 1 ? 'filled-box' : ''}`;
+  updatedClassName =
+    value && value.length === 1 ? className + ' filled-box' : className;
 
   return (
-    <div className={className} key={'r' + rowNumber + 'k' + boxNumber}>
+    <div className={updatedClassName} key={'r' + rowNumber + 'k' + boxNumber}>
       {value}
     </div>
   );
