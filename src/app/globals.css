@@ -78,3 +78,15 @@ body {
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.green-box {
+  background-color: green;
+}
+
+.yellow-box {
+  background-color: yellow;
+}
+
+.gray-box {
+  background-color: gray;
+}

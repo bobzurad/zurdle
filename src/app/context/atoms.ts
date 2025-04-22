@@ -1,4 +1,5 @@
 import { atom } from 'jotai';
+import { SOLUTION } from './words';
 
 const NUMBER_OF_GUESSES = 6;
 const WORD_LENGTH = 5;
@@ -23,3 +24,5 @@ export const activeRowAtom = atom((get) => {
   const state = get(mainAtom);
   return state.numberOfGuesses - state.numberOfGuessesRemaining;
 });
+
+export const solutionAtom = atom(SOLUTION);

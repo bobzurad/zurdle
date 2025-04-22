@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useAtomValue } from 'jotai';
-import { mainAtom, activeRowAtom } from '../context/atoms';
+import { mainAtom, activeRowAtom, solutionAtom } from '../context/atoms';
 
 export default function Box(props: {
   className: string;
@@ -15,25 +15,49 @@ export default function Box(props: {
 
   const state = useAtomValue(mainAtom);
   const activeRow = useAtomValue(activeRowAtom);
+  const solution = useAtomValue(solutionAtom);
 
   let value = '';
   let updatedClassName = className;
 
-  if (
-    activeRow === rowNumber &&
-    state.currentGuessLetters.length >= boxNumber
-  ) {
+  const hasValue = () => {
+    return value && value.length === 1;
+  };
+
+  const inActiveRow = () => {
+    return (
+      activeRow === rowNumber && state.currentGuessLetters.length >= boxNumber
+    );
+  };
+
+  const inGuessedRow = () => {
+    return (
+      state.guesses.length >= rowNumber &&
+      state.guesses[rowNumber] &&
+      state.guesses[rowNumber].length >= boxNumber
+    );
+  };
+
+  // read the value from the state
+  if (inActiveRow()) {
     value = state.currentGuessLetters[boxNumber];
-  } else if (
-    state.guesses.length >= rowNumber &&
-    state.guesses[rowNumber] &&
-    state.guesses[rowNumber].length >= boxNumber
-  ) {
+  } else if (inGuessedRow()) {
     value = state.guesses[rowNumber][boxNumber];
   }
 
-  updatedClassName =
-    value && value.length === 1 ? className + ' filled-box' : className;
+  // add css class for a box that has a letter in it
+  updatedClassName = hasValue() ? className + ' filled-box' : className;
+
+  // add css classes for guesses that have been made
+  if (inGuessedRow()) {
+    if (value === solution[boxNumber]) {
+      updatedClassName += ' green-box';
+    } else if (solution.includes(value)) {
+      updatedClassName += ' yellow-box';
+    } else {
+      updatedClassName += ' gray-box';
+    }
+  }
 
   return (
     <div className={updatedClassName} key={'r' + rowNumber + 'k' + boxNumber}>
