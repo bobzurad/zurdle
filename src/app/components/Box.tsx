@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useAtomValue } from 'jotai';
-import { mainAtom, activeRowAtom, solutionAtom } from '../context/atoms';
+import { mainAtom, activeRowAtom } from '../context/atoms';
 
 export default function Box(props: {
   className: string;
@@ -15,14 +15,8 @@ export default function Box(props: {
 
   const state = useAtomValue(mainAtom);
   const activeRow = useAtomValue(activeRowAtom);
-  const solution = useAtomValue(solutionAtom);
 
-  let value = '';
-  let updatedClassName = className;
-
-  const hasValue = () => {
-    return value && value.length === 1;
-  };
+  let guess = { value: '', className };
 
   const inActiveRow = () => {
     return (
@@ -40,28 +34,19 @@ export default function Box(props: {
 
   // read the value from the state
   if (inActiveRow()) {
-    value = state.currentGuessLetters[boxNumber];
+    guess = state.currentGuessLetters[boxNumber];
   } else if (inGuessedRow()) {
-    value = state.guesses[rowNumber][boxNumber];
-  }
-
-  // add css class for a box that has a letter in it
-  updatedClassName = hasValue() ? className + ' filled-box' : className;
-
-  // add css classes for guesses that have been made
-  if (inGuessedRow()) {
-    if (value === solution[boxNumber]) {
-      updatedClassName += ' green-box';
-    } else if (solution.includes(value)) {
-      updatedClassName += ' yellow-box';
-    } else {
-      updatedClassName += ' gray-box';
-    }
+    guess = state.guesses[rowNumber][boxNumber];
   }
 
   return (
-    <div className={updatedClassName} key={'r' + rowNumber + 'k' + boxNumber}>
-      {value}
+    <div
+      className={
+        guess !== undefined ? className + ' ' + guess.className : className
+      }
+      key={'r' + rowNumber + 'k' + boxNumber}
+    >
+      {guess !== undefined ? guess.value : ''}
     </div>
   );
 }

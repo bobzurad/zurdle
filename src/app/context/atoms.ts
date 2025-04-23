@@ -4,9 +4,14 @@ import { SOLUTION } from './words';
 const NUMBER_OF_GUESSES = 6;
 const WORD_LENGTH = 5;
 
+type GuessLetter = {
+  className: string;
+  value: string;
+};
+
 type MainModel = {
-  guesses: string[][];
-  currentGuessLetters: string[];
+  guesses: GuessLetter[][];
+  currentGuessLetters: GuessLetter[];
   numberOfGuesses: number;
   numberOfGuessesRemaining: number;
   wordLength: number;
