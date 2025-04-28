@@ -1,8 +1,7 @@
 import { atom } from 'jotai';
-import { SOLUTION } from './words';
 
 const NUMBER_OF_GUESSES = 6;
-const WORD_LENGTH = 5;
+export const MAX_WORD_LENGTH = 5;
 
 type GuessLetter = {
   className: string;
@@ -22,7 +21,7 @@ export const mainAtom = atom({
   currentGuessLetters: [],
   numberOfGuesses: NUMBER_OF_GUESSES,
   numberOfGuessesRemaining: NUMBER_OF_GUESSES,
-  wordLength: WORD_LENGTH,
+  wordLength: MAX_WORD_LENGTH,
 } as MainModel);
 
 export const activeRowAtom = atom((get) => {
@@ -30,4 +29,4 @@ export const activeRowAtom = atom((get) => {
   return state.numberOfGuesses - state.numberOfGuessesRemaining;
 });
 
-export const solutionAtom = atom(SOLUTION);
+export const solutionAtom = atom('');
