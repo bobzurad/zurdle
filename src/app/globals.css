@@ -86,12 +86,15 @@ body {
 
 .green-box {
   background-color: green;
+  border: 2px solid green;
 }
 
 .yellow-box {
   background-color: yellow;
+  border: 2px solid yellow;
 }
 
 .gray-box {
   background-color: gray;
+  border: 2px solid gray;
 }

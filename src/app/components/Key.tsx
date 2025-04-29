@@ -69,7 +69,7 @@ export default function Key(props: { value: string }) {
       state.numberOfGuessesRemaining--;
     } else {
       // letter key was pressed
-      state.currentGuessLetters.push({ value, className: '' });
+      state.currentGuessLetters.push({ value, className: 'filled-box' });
     }
 
     console.log(`setting updated state...`);
