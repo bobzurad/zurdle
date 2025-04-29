@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
 import { mainAtom, solutionAtom } from '../context/atoms';
 
-export default function Key(props: { value: string }) {
+export default function Key(props: { value: string; className: string }) {
   const [value] = useState(props.value);
   const [state, setState] = useAtom(mainAtom);
   const solution = useAtomValue(solutionAtom);
@@ -35,7 +35,7 @@ export default function Key(props: { value: string }) {
     }
   };
 
-  const keyClick = (e: any) => {
+  const keyClick = () => {
     if (
       (value.toUpperCase() === 'DEL' &&
         state.currentGuessLetters.length === 0) ||
@@ -51,8 +51,6 @@ export default function Key(props: { value: string }) {
       // - letter key was pressed after filling the row
       return;
     }
-
-    console.log(`key pressed: ${value}`);
 
     if (value.toUpperCase() === 'DEL') {
       // delete key was pressed
@@ -72,23 +70,20 @@ export default function Key(props: { value: string }) {
       state.currentGuessLetters.push({ value, className: 'filled-box' });
     }
 
-    console.log(`setting updated state...`);
-    console.log(state);
-
     setState({ ...state });
   };
 
   // css classes for guessed letters
-  let className = 'keyboard-button';
+  let updatedClassName = props.className;
   let matchedLetter = getMatchedLetter();
   if (matchedLetter) {
-    className += ' ' + matchedLetter.className;
+    updatedClassName += ' ' + matchedLetter.className;
   }
 
   return (
     <>
       <button
-        className={className}
+        className={updatedClassName}
         onClick={keyClick}
         disabled={state.numberOfGuessesRemaining === 0}
       >
