@@ -11,7 +11,6 @@ import {
   Input,
   Typography,
 } from 'antd';
-import { PresetColors } from 'antd/es/theme/internal';
 import { MAX_WORD_LENGTH, solutionAtom } from './context/atoms';
 import { SOLUTION } from './context/words';
 import Gameboard from './components/Gameboard';
@@ -25,10 +24,10 @@ export default function Home() {
   const [randomColor, setRandomColor] = useState('');
   const [solution, setSolution] = useAtom(solutionAtom);
 
+  const Colors = ['#ff0000', '#00ff00', '#0000ff'];
+
   useEffect(() => {
-    setRandomColor(
-      PresetColors[Math.floor(Math.random() * PresetColors.length)]
-    );
+    setRandomColor(Colors[Math.floor(Math.random() * Colors.length)]);
   }, []);
 
   console.log(SOLUTION);
@@ -40,6 +39,9 @@ export default function Home() {
           Input: {
             activeBorderColor: randomColor,
             hoverBorderColor: randomColor,
+          },
+          Button: {
+            defaultBg: randomColor,
           },
         },
       }}
@@ -57,18 +59,10 @@ export default function Home() {
             <>
               {!showForm && (
                 <Flex gap="middle">
-                  <Button
-                    variant="solid"
-                    color={PresetColors.find((value) => value === randomColor)}
-                    onClick={() => setShowForm(true)}
-                  >
+                  <Button variant="solid" onClick={() => setShowForm(true)}>
                     Enter a Word
                   </Button>
-                  <Button
-                    variant="solid"
-                    color={PresetColors.find((value) => value === randomColor)}
-                    onClick={() => setSolution(SOLUTION)}
-                  >
+                  <Button variant="solid" onClick={() => setSolution(SOLUTION)}>
                     Use Random Word
                   </Button>
                 </Flex>
@@ -85,12 +79,7 @@ export default function Home() {
                         onChange={(e) => setCustomWord(e.currentTarget.value)}
                       />
                       <Button
-                        type="primary"
                         disabled={customWord.length < 5}
-                        style={{ background: randomColor }}
-                        color={PresetColors.find(
-                          (value) => value === randomColor
-                        )}
                         onClick={() => setSolution(customWord)}
                       >
                         Go!
