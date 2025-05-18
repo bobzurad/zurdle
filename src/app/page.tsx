@@ -33,65 +33,67 @@ export default function Home() {
   console.log(SOLUTION);
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Input: {
-            activeBorderColor: randomColor,
-            hoverBorderColor: randomColor,
-          },
-          Button: {
-            defaultBg: randomColor,
-          },
-        },
-      }}
-    >
-      <Layout>
-        <Flex style={{ height: '100vh' }} align="center" justify="center" wrap>
-          {solution.length > 1 && (
-            <>
-              <Title style={{ color: randomColor }}>Zurdle</Title>
-              <Gameboard />
-              <Keyboard />
-            </>
-          )}
-          {solution.length === 0 && (
-            <>
-              {!showForm && (
-                <Flex gap="middle">
-                  <Button variant="solid" onClick={() => setShowForm(true)}>
-                    Enter a Word
-                  </Button>
-                  <Button variant="solid" onClick={() => setSolution(SOLUTION)}>
-                    Use Random Word
-                  </Button>
-                </Flex>
-              )}
-              {showForm && (
-                <Flex justify="center" vertical>
-                  <Text strong>Enter a word for someone to guess:</Text>
-                  <Space>
-                    <Space.Compact>
-                      <Input
-                        className="setWordInput"
-                        maxLength={MAX_WORD_LENGTH}
-                        autoFocus
-                        onChange={(e) => setCustomWord(e.currentTarget.value)}
-                      />
-                      <Button
-                        disabled={customWord.length < 5}
-                        onClick={() => setSolution(customWord)}
-                      >
-                        Go!
-                      </Button>
-                    </Space.Compact>
-                  </Space>
-                </Flex>
-              )}
-            </>
-          )}
-        </Flex>
-      </Layout>
-    </ConfigProvider>
+    // Uncomment if you want to play with custom themes and colors
+    // <ConfigProvider
+    //   theme={{
+    //     components: {
+    //       Input: {
+    //         activeBorderColor: randomColor,
+    //         hoverBorderColor: randomColor,
+    //       },
+    //       Button: {
+    //         defaultBg: randomColor,
+    //       },
+    //     },
+    //   }}
+    // >
+    <Layout>
+      <Flex style={{ height: '100vh' }} align="center" justify="center" wrap>
+        {solution.length > 1 && (
+          <>
+            <Title>Zurdle</Title>
+            <Gameboard />
+            <Keyboard />
+          </>
+        )}
+        {solution.length === 0 && (
+          <>
+            {!showForm && (
+              <Flex gap="middle">
+                <Button variant="solid" onClick={() => setShowForm(true)}>
+                  Enter a Word
+                </Button>
+                <Button variant="solid" onClick={() => setSolution(SOLUTION)}>
+                  Use Random Word
+                </Button>
+              </Flex>
+            )}
+            {showForm && (
+              <Flex justify="center" vertical>
+                <Text strong>Enter a word for someone to guess:</Text>
+                <Space>
+                  <Space.Compact>
+                    <Input
+                      className="setWordInput"
+                      maxLength={MAX_WORD_LENGTH}
+                      autoFocus
+                      onChange={(e) => setCustomWord(e.currentTarget.value)}
+                    />
+                    <Button
+                      type="primary"
+                      disabled={customWord.length < 5}
+                      onClick={() => setSolution(customWord)}
+                    >
+                      Go!
+                    </Button>
+                  </Space.Compact>
+                </Space>
+              </Flex>
+            )}
+          </>
+        )}
+      </Flex>
+    </Layout>
+    //    </ConfigProvider>
   );
 }
