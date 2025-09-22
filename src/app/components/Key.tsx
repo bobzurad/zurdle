@@ -63,8 +63,18 @@ export default function Key(props: { value: string; className: string }) {
           className: getClassName(guessLetter.value, index),
         }))
       );
+      // is the current guess the solution?
+      const currentGuessWord = state.currentGuessLetters
+        .map((letter) => letter.value)
+        .toString()
+        .replaceAll(',', '');
+      if (currentGuessWord === solution) {
+        state.numberOfGuessesRemaining = 0;
+      } else {
+        state.numberOfGuessesRemaining--;
+      }
+      // clear state
       state.currentGuessLetters = [];
-      state.numberOfGuessesRemaining--;
     } else {
       // letter key was pressed
       state.currentGuessLetters.push({ value, className: 'filled-box' });
@@ -75,7 +85,7 @@ export default function Key(props: { value: string; className: string }) {
 
   // css classes for guessed letters
   let updatedClassName = props.className;
-  let matchedLetter = getMatchedLetter();
+  const matchedLetter = getMatchedLetter();
   if (matchedLetter) {
     updatedClassName += ' ' + matchedLetter.className;
   }

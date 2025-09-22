@@ -70,7 +70,7 @@ export default function Home() {
             )}
             {showForm && (
               <Flex justify="center" vertical>
-                <Text strong>Enter a word for someone to guess:</Text>
+                <Text strong>Enter a 5 letter word for someone to guess:</Text>
                 <Space>
                   <Space.Compact>
                     <Input

@@ -29,7 +29,7 @@ export default function Keyboard(props: {}) {
         <Key value="l" className="keyboard-button" />
       </div>
       <div className="third-row">
-        <Key value="Del" className="keyboard-button key-text-small" />
+        <Key value="Enter" className="keyboard-button key-text-small" />
         <Key value="z" className="keyboard-button" />
         <Key value="x" className="keyboard-button" />
         <Key value="c" className="keyboard-button" />
@@ -37,7 +37,7 @@ export default function Keyboard(props: {}) {
         <Key value="b" className="keyboard-button" />
         <Key value="n" className="keyboard-button" />
         <Key value="m" className="keyboard-button" />
-        <Key value="Enter" className="keyboard-button key-text-small" />
+        <Key value="Del" className="keyboard-button key-text-small" />
       </div>
     </div>
   );
