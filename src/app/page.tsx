@@ -78,7 +78,7 @@ export default function Home() {
               </Flex>
             )}
             {showForm && (
-              <Flex justify="center" vertical>
+              <Flex className="enterWord" justify="center" vertical>
                 <Text strong>Enter a 5 letter word for someone to guess:</Text>
                 <Space>
                   <Space.Compact>

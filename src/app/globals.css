@@ -58,6 +58,11 @@ body {
   width: 100%;
 }
 
+.enterWord {
+  height: 100%;
+  align-items: center;
+}
+
 .doneMessage {
   display: flex;
   flex-direction: column;
