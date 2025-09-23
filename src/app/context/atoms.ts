@@ -14,6 +14,7 @@ type MainModel = {
   numberOfGuesses: number;
   numberOfGuessesRemaining: number;
   wordLength: number;
+  solved: boolean;
 };
 
 export const mainAtom = atom({
@@ -22,6 +23,7 @@ export const mainAtom = atom({
   numberOfGuesses: NUMBER_OF_GUESSES,
   numberOfGuessesRemaining: NUMBER_OF_GUESSES,
   wordLength: MAX_WORD_LENGTH,
+  solved: false
 } as MainModel);
 
 export const activeRowAtom = atom((get) => {

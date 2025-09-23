@@ -70,6 +70,7 @@ export default function Key(props: { value: string; className: string }) {
         .replaceAll(',', '');
       if (currentGuessWord === solution) {
         state.numberOfGuessesRemaining = 0;
+        state.solved = true;
       } else {
         state.numberOfGuessesRemaining--;
       }

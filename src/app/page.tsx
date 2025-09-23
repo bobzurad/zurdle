@@ -11,10 +11,13 @@ import {
   Input,
   Typography,
 } from 'antd';
-import { MAX_WORD_LENGTH, solutionAtom } from './context/atoms';
+import 'animate.css';
+import { MAX_WORD_LENGTH, mainAtom, solutionAtom } from './context/atoms';
 import { SOLUTION } from './context/words';
 import Gameboard from './components/Gameboard';
 import Keyboard from './components/Keyboard';
+import Message from './components/Message';
+import MessageSpacer from './components/MessageSpacer';
 
 const { Text, Title } = Typography;
 
@@ -22,6 +25,7 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [customWord, setCustomWord] = useState('');
   const [randomColor, setRandomColor] = useState('');
+  const [state] = useAtom(mainAtom);
   const [solution, setSolution] = useAtom(solutionAtom);
 
   const Colors = ['#ff0000', '#00ff00', '#0000ff'];
@@ -51,7 +55,22 @@ export default function Home() {
       <Flex style={{ height: '100vh' }} align="center" justify="center" wrap>
         {solution.length > 1 && (
           <>
-            <Title>Zurdle</Title>
+            <div className="zurdleTitle">
+              <Title level={2}>Zurdle</Title>
+            </div>
+            {!state.solved && state.numberOfGuessesRemaining > 0 && (
+              <MessageSpacer />
+            )}
+            {state.solved && (
+              <Message type="success" buttonColor="green" message="Hooray!!!" />
+            )}
+            {!state.solved && state.numberOfGuessesRemaining === 0 && (
+              <Message
+                type="danger"
+                buttonColor="danger"
+                message={'Sorry. The word was: ' + solution.toUpperCase()}
+              />
+            )}
             <Gameboard />
             <Keyboard />
           </>
