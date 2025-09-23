@@ -49,58 +49,60 @@ export default function Home() {
         )}
         {solution.length === 0 && (
           <>
-            {!showForm && (
-              <Flex
-                gap="middle"
-                style={{ flexDirection: 'column', alignItems: 'center' }}
-              >
-                <Title level={2}>Welcome to Zurdle!</Title>
-                <Text type="secondary" style={{ marginBottom: '6rem' }}>
-                  (a Wordle clone)
-                </Text>
-                <Paragraph>
-                  There are two ways to play:
-                  <br />
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;1) You may enter a word for someone
-                  else to guess.
-                  <br />
-                  &nbsp;&nbsp;&nbsp;&nbsp;2) You may play yourself with a random
-                  word.
-                </Paragraph>
-                <Title level={4}>How would you like to play?</Title>
+            <Flex
+              gap="middle"
+              style={{ flexDirection: 'column', alignItems: 'center' }}
+            >
+              <Title level={2}>Welcome to Zurdle!</Title>
+              <Text type="secondary" style={{ marginBottom: '6rem' }}>
+                (a Wordle clone)
+              </Text>
+              <Paragraph>
+                There are two ways to play:
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;1) You may enter a word for someone else
+                to guess.
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;2) You may play yourself with a random
+                word.
+              </Paragraph>
+              <Title level={4}>How would you like to play?</Title>
+              {!showForm && (
                 <Button variant="solid" onClick={() => setShowForm(true)}>
                   Enter a Word
                 </Button>
-                <Button variant="solid" onClick={() => setSolution(SOLUTION)}>
-                  Use Random Word
-                </Button>
-              </Flex>
-            )}
-            {showForm && (
-              <Flex className="enterWord" justify="center" vertical>
-                <Text strong>Enter a 5 letter word for someone to guess:</Text>
-                <Space>
-                  <Space.Compact>
-                    <Input
-                      className="setWordInput"
-                      maxLength={MAX_WORD_LENGTH}
-                      autoFocus
-                      onChange={(e) =>
-                        setCustomWord(e.currentTarget.value.toLowerCase())
-                      }
-                    />
-                    <Button
-                      type="primary"
-                      disabled={customWord.length < 5}
-                      onClick={() => setSolution(customWord.toLowerCase())}
-                    >
-                      Go!
-                    </Button>
-                  </Space.Compact>
-                </Space>
-              </Flex>
-            )}
+              )}
+              {showForm && (
+                <Flex className="enterWord" justify="center" vertical>
+                  <Text strong>
+                    Enter a 5 letter word for someone to guess:
+                  </Text>
+                  <Space>
+                    <Space.Compact>
+                      <Input
+                        className="setWordInput"
+                        maxLength={MAX_WORD_LENGTH}
+                        autoFocus
+                        onChange={(e) =>
+                          setCustomWord(e.currentTarget.value.toLowerCase())
+                        }
+                      />
+                      <Button
+                        type="primary"
+                        disabled={customWord.length < 5}
+                        onClick={() => setSolution(customWord.toLowerCase())}
+                      >
+                        Go!
+                      </Button>
+                    </Space.Compact>
+                  </Space>
+                </Flex>
+              )}
+              <Button variant="solid" onClick={() => setSolution(SOLUTION)}>
+                Use Random Word
+              </Button>
+            </Flex>
           </>
         )}
       </Content>
