@@ -23,7 +23,7 @@ export default function Key(props: { value: string; className: string }) {
   const getMatchedLetter = () => {
     if (state.guesses.length > 0) {
       for (let i = state.guesses.length - 1; i >= 0; i--) {
-        const found = state.guesses[i].find((guessLetter, index) => {
+        const found = state.guesses[i].find((guessLetter) => {
           return guessLetter.value === value;
         });
         if (found) {

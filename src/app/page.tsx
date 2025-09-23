@@ -1,16 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
-import {
-  ConfigProvider,
-  Layout,
-  Button,
-  Flex,
-  Space,
-  Input,
-  Typography,
-} from 'antd';
+import { Layout, Button, Flex, Space, Input, Typography } from 'antd';
 import 'animate.css';
 import { MAX_WORD_LENGTH, mainAtom, solutionAtom } from './context/atoms';
 import { SOLUTION } from './context/words';
@@ -24,33 +16,12 @@ const { Text, Title } = Typography;
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [customWord, setCustomWord] = useState('');
-  const [randomColor, setRandomColor] = useState('');
   const [state] = useAtom(mainAtom);
   const [solution, setSolution] = useAtom(solutionAtom);
-
-  const Colors = ['#ff0000', '#00ff00', '#0000ff'];
-
-  useEffect(() => {
-    setRandomColor(Colors[Math.floor(Math.random() * Colors.length)]);
-  }, []);
 
   console.log(SOLUTION);
 
   return (
-    // Uncomment if you want to play with custom themes and colors
-    // <ConfigProvider
-    //   theme={{
-    //     components: {
-    //       Input: {
-    //         activeBorderColor: randomColor,
-    //         hoverBorderColor: randomColor,
-    //       },
-    //       Button: {
-    //         defaultBg: randomColor,
-    //       },
-    //     },
-    //   }}
-    // >
     <Layout>
       <Flex style={{ height: '100vh' }} align="center" justify="center" wrap>
         {solution.length > 1 && (
@@ -113,6 +84,5 @@ export default function Home() {
         )}
       </Flex>
     </Layout>
-    //    </ConfigProvider>
   );
 }

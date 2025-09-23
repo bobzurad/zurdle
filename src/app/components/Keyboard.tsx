@@ -2,7 +2,7 @@
 
 import Key from '../components/Key';
 
-export default function Keyboard(props: {}) {
+export default function Keyboard() {
   return (
     <div id="keyboard-cont">
       <div className="first-row">

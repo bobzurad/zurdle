@@ -4,7 +4,7 @@ import { useAtomValue } from 'jotai';
 import { mainAtom } from '../context/atoms';
 import Row from './Row';
 
-export default function Gameboard(props: {}) {
+export default function Gameboard() {
   const state = useAtomValue(mainAtom);
 
   return (
