@@ -11,7 +11,7 @@ import Keyboard from './components/Keyboard';
 import Message from './components/Message';
 import MessageSpacer from './components/MessageSpacer';
 
-const { Text, Title } = Typography;
+const { Text, Title, Paragraph } = Typography;
 
 export default function Home() {
   const [showForm, setShowForm] = useState(false);
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Flex style={{ height: '100vh' }} align="center" justify="center" wrap>
+      <Flex style={{ height: '100vh' }} justify="center" wrap>
         {solution.length > 1 && (
           <>
             <div className="zurdleTitle">
@@ -49,7 +49,25 @@ export default function Home() {
         {solution.length === 0 && (
           <>
             {!showForm && (
-              <Flex gap="middle">
+              <Flex
+                gap="middle"
+                style={{ flexDirection: 'column', alignItems: 'center' }}
+              >
+                <Title level={2}>Welcome to Zurdle!</Title>
+                <Text type="secondary" style={{ marginBottom: '6rem' }}>
+                  (a Wordle clone)
+                </Text>
+                <Paragraph>
+                  There are two ways to play:
+                  <br />
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;1) You may enter a word for someone
+                  else to guess.
+                  <br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;2) You may play yourself with a random
+                  word.
+                </Paragraph>
+                <Title level={4}>How would you like to play?</Title>
                 <Button variant="solid" onClick={() => setShowForm(true)}>
                   Enter a Word
                 </Button>
