@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useAtom, useAtomValue } from 'jotai';
+import { Button } from 'antd';
 import { mainAtom, solutionAtom } from '../context/atoms';
 
 export default function Key(props: { value: string; className: string }) {
@@ -93,13 +94,13 @@ export default function Key(props: { value: string; className: string }) {
 
   return (
     <>
-      <button
+      <Button
         className={updatedClassName}
         onClick={keyClick}
         disabled={state.numberOfGuessesRemaining === 0}
       >
         {value}
-      </button>
+      </Button>
     </>
   );
 }
