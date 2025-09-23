@@ -10,9 +10,7 @@ export default function Key(props: { value: string; className: string }) {
   const solution = useAtomValue(solutionAtom);
 
   const getClassName = (value: string, index: number) => {
-    console.log(solution[index]);
-    console.log(value);
-    if (solution[index] === value) {
+    if (solution[index].trim().toLowerCase() === value.trim().toLowerCase()) {
       return 'green-box';
     } else if (solution.includes(value)) {
       return 'yellow-box';
