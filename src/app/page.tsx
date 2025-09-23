@@ -86,12 +86,14 @@ export default function Home() {
                       className="setWordInput"
                       maxLength={MAX_WORD_LENGTH}
                       autoFocus
-                      onChange={(e) => setCustomWord(e.currentTarget.value)}
+                      onChange={(e) =>
+                        setCustomWord(e.currentTarget.value.toLowerCase())
+                      }
                     />
                     <Button
                       type="primary"
                       disabled={customWord.length < 5}
-                      onClick={() => setSolution(customWord)}
+                      onClick={() => setSolution(customWord.toLowerCase())}
                     >
                       Go!
                     </Button>
