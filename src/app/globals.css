@@ -17,13 +17,32 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+}  */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-} */
+  margin: 0;
+}
+
+@media (min-height: 850px) {
+  .mainContent {
+    height: calc(100vh - 60px); /* 100% height minus height of footer */
+  }
+  .footer {
+    display: flex;
+    justify-content: end;
+    font-size: 9px;
+  }
+}
+
+@media (max-height: 850px) {
+  .mainContent {
+    height: 100vh;
+  }
+  .footer {
+    font-size: 9px;
+  }
+}
 
 #game-board {
   display: flex;
@@ -44,6 +63,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 .letter-box {
   border: 2px solid gray;
   border-radius: 3px;

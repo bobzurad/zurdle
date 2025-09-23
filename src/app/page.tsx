@@ -11,6 +11,7 @@ import Keyboard from './components/Keyboard';
 import Message from './components/Message';
 import MessageSpacer from './components/MessageSpacer';
 
+const { Content, Footer } = Layout;
 const { Text, Title, Paragraph } = Typography;
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <Flex style={{ height: '100vh' }} justify="center" wrap>
+      <Content className="mainContent">
         {solution.length > 1 && (
           <>
             <div className="zurdleTitle">
@@ -100,7 +101,12 @@ export default function Home() {
             )}
           </>
         )}
-      </Flex>
+      </Content>
+      <Footer className="footer">
+        This site was created by a loving father to make his daughter happy.
+        Source code is available
+        <a href="https://github.com/bobzurad/zurdle">&nbsp;here</a>.
+      </Footer>
     </Layout>
   );
 }
