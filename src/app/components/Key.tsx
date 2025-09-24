@@ -56,7 +56,7 @@ export default function Key(props: { value: string; className: string }) {
     } else if (isConditionYellow(value, index)) {
       return 'yellow-box';
     }
-    return 'gray-box';
+    return 'red-box';
   };
 
   // GuessLetter that matches the value of this Key
