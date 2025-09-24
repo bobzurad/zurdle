@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+For development, this project only requires that you have [NodeJS](https://nodejs.org/) installed.
+
+TODO: Write unit tests for the following cases and ensure that the tiles are properly colored. 
+
+* Solution: HORSE
+  * Guess: FLOOR
+  * Guess: BOOMS
+* Solution: VIVID
+  * Guess: VIVDI
+
 ## Getting Started
 
 First, run the development server:
