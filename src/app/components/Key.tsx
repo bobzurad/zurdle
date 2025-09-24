@@ -10,14 +10,53 @@ export default function Key(props: { value: string; className: string }) {
   const [state, setState] = useAtom(mainAtom);
   const solution = useAtomValue(solutionAtom);
 
-  const getClassName = (value: string, index: number) => {
-    if (solution[index].trim().toLowerCase() === value.trim().toLowerCase()) {
-      return 'green-box';
-    } else if (solution.includes(value)) {
-      return 'yellow-box';
-    } else {
-      return 'gray-box';
+  const numberOfInstancesOfValueInSolution = (value: string): number => {
+    let numInstances = 0;
+
+    [...solution].forEach((solutionValue: string) => {
+      if (solutionValue === value) {
+        numInstances++;
+      }
+    });
+
+    return numInstances;
+  };
+
+  const isConditionYellow = (value: string, index: number): boolean => {
+    const valueIsInSolution = solution.includes(value);
+
+    if (valueIsInSolution && numberOfInstancesOfValueInSolution(value) === 1) {
+      const correctIndex = solution.indexOf(value);
+      const valueIsAlreadyInCorrectIndex =
+        state.currentGuessLetters[correctIndex].value === value;
+
+      // value is in the solution AND value is not already in correct index
+      return !valueIsAlreadyInCorrectIndex;
     }
+
+    //if (numberOfInstancesOfValueInSolution(value) > 1) {
+    if (solution.includes(value)) {
+      // value is in the solution muliple times AND not all instances are in correct index
+      const incorrectIndexes = [-1]; //stores where yellow tiles are needed for current value
+      [...solution].forEach((solutionLetter: string, index: number) => {
+        if (solutionLetter !== value) {
+          incorrectIndexes.push(index);
+        }
+      });
+
+      return incorrectIndexes.indexOf(index) > 0; // currently guessed letter is in the wrong index
+    }
+
+    return false;
+  };
+
+  const getClassName = (value: string, index: number): string => {
+    if (solution[index] === value) {
+      return 'green-box';
+    } else if (isConditionYellow(value, index)) {
+      return 'yellow-box';
+    }
+    return 'gray-box';
   };
 
   // GuessLetter that matches the value of this Key
