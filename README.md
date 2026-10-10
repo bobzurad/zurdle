@@ -9,11 +9,11 @@ Some important libraries/packages that this project uses includes:
 - State Management: [Jotai](https://jotai.org)
 - UI Framework: [Ant Design](https://ant.design)
 - Unit Tests: [Vitest](https://vitest.dev)
-- End-to-End Tests: [https://playwright.dev]
+- End-to-End Tests: [Playwright](https://playwright.dev)
 
 ## Prerequisites
 
-For development, this project only requires that you have [NodeJS](https://nodejs.org/) installed.
+For development, this project only requires that you have [NodeJS](https://nodejs.org/) v22 or later installed.
 
 ## Building and Running
 
