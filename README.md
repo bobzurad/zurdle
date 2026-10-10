@@ -8,42 +8,35 @@ Some important libraries/packages that this project uses includes:
 
 - State Management: [Jotai](https://jotai.org)
 - UI Framework: [Ant Design](https://ant.design)
-
-TODO: Write unit tests for the following cases and ensure that the tiles are properly colored. 
-
-* Solution: HORSE
-  * Guess: FLOOR
-  * Guess: BOOMS
-* Solution: VIVID
-  * Guess: VIVDI
+- Unit Tests: [Vitest](https://vitest.dev)
+- End-to-End Tests: [https://playwright.dev]
 
 ## Prerequisites
 
 For development, this project only requires that you have [NodeJS](https://nodejs.org/) installed.
 
-## Running
+## Building and Running
 
-First, run the development server:
+To run the project in development mode, run:
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Building
-
-Use Next.js to build the project by running:
+To run the project in production mode, run:
 
 ```bash
 npm run build
+npm run start
 ```
+
+The application is available at: [http://localhost:3000](http://localhost:3000)
 
 ## Testing
 
 ### Unit Tests
 
-Vitest is used for Unit Testing. To run unit tests:
+[Vitest](https://vitest.dev/) is used for Unit Testing. To run unit tests:
 
 ```bash
 npm run test
@@ -51,4 +44,15 @@ npm run test
 
 ### E2E Tests
 
-Playwright
+[Playwright](https://playwright.dev/) is used for End-to-End (E2E) tests. To run the E2E tests, run:
+
+```bash
+npm run build
+npm run start
+``` 
+
+Then open a new terminal window and run:
+
+```bash
+npx playwright test
+```
