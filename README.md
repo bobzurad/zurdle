@@ -48,11 +48,5 @@ npm run test
 
 ```bash
 npm run build
-npm run start
-``` 
-
-Then open a new terminal window and run:
-
-```bash
 npx playwright test
-```
+``` 

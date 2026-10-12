@@ -12,7 +12,7 @@ import { test, expect, Page } from '@playwright/test';
 
 test('play game with solution VIVID', async ({ page }) => {
   // navigate to page
-  await page.goto('http://localhost:3000');
+  await page.goto('/');
   await page.getByRole('button', { name: 'Enter a Word' }).click();
   // enter solution word and go
   await page.getByRole('textbox').fill('vivid');
